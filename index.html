@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
 </head>
-<body>
+<body style="margin: 0; overflow: hidden;">
     <script type="importmap">
         {
             "imports": {
@@ -23,10 +23,12 @@
 
         function init() {
             scene = new THREE.Scene();
+            scene.background = null;  // Make the background transparent
+
             camera = new THREE.PerspectiveCamera(40, window.innerWidth / window.innerHeight, 1, 500);
             camera.position.z = 200;
 
-            renderer = new THREE.WebGLRenderer({ antialias: true });
+            renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true }); // Enable transparency
             renderer.setSize(window.innerWidth, window.innerHeight);
             document.body.appendChild(renderer.domElement);
 
