@@ -19,7 +19,7 @@
         import * as THREE from 'three';
         import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 
-        let scene, camera, renderer;
+        let scene, camera, renderer, mesh;
 
         function init() {
             scene = new THREE.Scene();
@@ -41,7 +41,7 @@
                     geometry.deleteAttribute('uv');
 
                     const material = new THREE.MeshBasicMaterial({ color: 0xe0e0ff, wireframe: true });
-                    const mesh = new THREE.Mesh(geometry, material);
+                    mesh = new THREE.Mesh(geometry, material);
                     scene.add(mesh);
                     animate();
                 }
@@ -50,6 +50,13 @@
 
         function animate() {
             requestAnimationFrame(animate);
+
+            // Apply rotation on the X and Y axes to make the model spin at an angle
+            if (mesh) {
+                mesh.rotation.x += 0.01;  // Rotate on X-axis
+                mesh.rotation.y += 0.01;  // Rotate on Y-axis
+            }
+
             renderer.render(scene, camera);
         }
 
