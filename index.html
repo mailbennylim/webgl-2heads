@@ -26,7 +26,7 @@
             scene.background = null;  // Make the background transparent
 
             camera = new THREE.PerspectiveCamera(40, window.innerWidth / window.innerHeight, 1, 500);
-            camera.position.z = 250;
+            camera.position.z = 280;
 
             renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true }); // Enable transparency
             renderer.setSize(window.innerWidth, window.innerHeight);
@@ -56,7 +56,7 @@
 
             // Apply rotation on the X and Y axes to make the model spin at an angle
             if (mesh) {
-                mesh.rotation.x += 0.0001  // Rotate on X-axis
+                mesh.rotation.x += 0.000001  // Rotate on X-axis
                 mesh.rotation.y += 0.001;  // Rotate on Y-axis
             }
 
